@@ -1,6 +1,6 @@
 const routes = [
     {
-        method: 'GET',
+        method: 'POST',
         route: '/notes',
         handler: () => {}
     }
