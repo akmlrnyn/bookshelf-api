@@ -116,6 +116,7 @@ const getNoteByIdHandler = (request, h) => {
         message: 'Buku tidak ditemukan',
     });
 
+    response.code(404);
     return response;
 
 }
