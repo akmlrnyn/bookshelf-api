@@ -1,6 +1,4 @@
-const {
-    nanoid
-} = require('nanoid');
+const { nanoid } = require('nanoid');
 const books = require('./books');
 
 const addBookHandler = (request, h) => {
@@ -39,13 +37,6 @@ const addBookHandler = (request, h) => {
     books.push(newBook);
 
     const isSuccess = books.filter((book) => book.id === id).length > 0;
-    // const datas = books.map((book) => {
-    //     return {
-    //         id: id,
-    //         name: book.name,
-    //         publisher: book.publisher,
-    //     };
-    // });
 
     if (isSuccess) {
 
@@ -103,7 +94,34 @@ const getAllBooksHandler = () => ({
     }
 })
 
+const getNoteByIdHandler = (request, h) => {
+
+    const { id } = request.params;
+
+    const book = books.filter((n) => n.id === id)[0];
+
+    if (book !== undefined) {
+        return {
+            status: 'success',
+            data: {
+                book: {
+                    book,
+                }
+            }
+        }
+    }
+
+    const response = h.response({
+        status: 'fail',
+        message: 'Buku tidak ditemukan',
+    });
+
+    return response;
+
+}
+
 module.exports = {
     addBookHandler,
-    getAllBooksHandler
+    getAllBooksHandler,
+    getNoteByIdHandler
 };
