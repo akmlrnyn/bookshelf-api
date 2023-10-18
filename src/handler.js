@@ -54,7 +54,7 @@ const addBookHandler = (request, h) => {
       const response = h.response({
 
         status: 'fail',
-        message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount'
+        message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount',
 
       });
 
